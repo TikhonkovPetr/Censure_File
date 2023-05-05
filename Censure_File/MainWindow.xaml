@@ -1,0 +1,17 @@
+﻿<Window x:Class="Censure_File.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Censure_File"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="727">
+    <Grid>
+        <Button Content="Выбрать файл" Click="Button_Click_Vibr" HorizontalAlignment="Left" Margin="71,53,0,0" VerticalAlignment="Top" FontSize="18" Width="138" Height="38"/>
+        <Label Content="Выбран файл" HorizontalAlignment="Left" Margin="251,54,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <TextBox x:Name="Path" HorizontalAlignment="Left" FontSize="20" Margin="434,63,0,0" TextWrapping="Wrap" Text="Path" VerticalAlignment="Top" Width="254" Height="28"/>
+        <Label Content="Введите запрещённые слова" FontSize="20" HorizontalAlignment="Left" Margin="48,142,0,0" VerticalAlignment="Top" Width="282" Height="41"/>
+        <TextBox x:Name="TxtBox" HorizontalAlignment="Left" Margin="48,188,0,0" FontSize="15" TextWrapping="Wrap" Text="Text" VerticalAlignment="Top" Width="396" Height="211" DataContextChanged="TxtBox_DataContextChanged" TextChanged="TxtBox_TextChanged"/>
+        <Button Content="Провести цензуру документов" Click="Button_Click_Prov" FontSize="17" HorizontalAlignment="Left" Margin="466,283,0,0" VerticalAlignment="Top" Width="251" Height="47"/>
+    </Grid>
+</Window>
