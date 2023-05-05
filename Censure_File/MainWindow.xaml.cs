@@ -39,7 +39,6 @@ namespace Censure_File
         }
         private void Button_Click_Vibr(object sender, RoutedEventArgs e)
         {
-            //Path.Text = openFileDialog.FileName
             if (openFileDialog.ShowDialog() == true)
             {
                 path_File = openFileDialog.FileName;

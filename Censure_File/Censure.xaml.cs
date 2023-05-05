@@ -29,11 +29,9 @@ namespace Censure_File
         public Censure()
         {
             InitializeComponent();
-            List<string> Zapret = new List<string> { "yes", "fuck" };
             string str = "";
             string h = "";
             int number_path = 0;
-            int per = 0;
             thread = new Thread(NachCensure);
             list.Add(MainWindow.censure_word);
             list.Add(str);
@@ -91,28 +89,35 @@ namespace Censure_File
             string text = ((obj as List<object>)[1] as string);
             string word = "";
             int numZap = 0;
-            for (int i = 0; i < text.Length; i++)
-            {
-                if (text[i] == ' ' || text[i] == '\n' || text[i] == '\0' || text[i] == '.' || text[i]=='\r' ||text.Count() == i + 1)
+            if (text.Length <= 30000)
+            { 
+                for (int i = 0; i < text.Length; i++)
                 {
-                    if (text.Count() == i + 1)
+                    if (text[i] == ' ' || text[i] == '\n' || text[i] == '\0' || text[i] == '.' || text[i] == '\r' || text.Count() == i + 1)
+                    {
+                        if (text.Count() == i + 1)
+                        {
+                            word = word + text[i];
+                        }
+                        word = word.ToLower();
+                        foreach (string s in ((obj as List<object>)[0] as List<string>))
+                        {
+                            if (word == s)
+                            {
+                                numZap++;
+                            }
+                        }
+                        word = "";
+                    }
+                    else
                     {
                         word = word + text[i];
                     }
-                    word = word.ToLower();
-                    foreach (string s in ((obj as List<object>)[0] as List<string>))
-                    {
-                        if(word==s)
-                        {
-                            numZap++;
-                        }
-                    }
-                    word = "";
                 }
-                else
-                {
-                    word = word + text[i];
-                }
+            }
+            else
+            {
+                MessageBox.Show("Символов больше 30000, к сожалению подсчитать число запрещённых слов слишком затратно", "Большой текст", MessageBoxButton.OK, MessageBoxImage.Warning, MessageBoxResult.Yes);
             }
             obsh_colvo_zap += numZap;
             foreach (string s in ((obj as List<object>)[0] as List<string>))
